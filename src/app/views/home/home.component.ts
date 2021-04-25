@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/service/api.service';
+import { Establishments } from 'src/app/core/model/establishments.model';
+import { ApiService } from 'src/app/core/service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,17 @@ export class HomeComponent implements OnInit {
     private apiService: ApiService
   ) { }
 
+  listEstablishments: Establishments[] = [];
+
   ngOnInit(): void {
     this.getRequest();
   }
 
   getRequest(): void {
-    this.apiService.getConfigResponse()
-      .subscribe((data) => {
-        console.log(data)
-      });
+    this.apiService.get().subscribe((data) => {
+      this.listEstablishments = data.body;
+      console.log('this.listEstablishments', this.listEstablishments)
+    });
   }
+  
 }

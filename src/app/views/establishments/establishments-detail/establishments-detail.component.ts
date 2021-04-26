@@ -60,19 +60,13 @@ export class EstablishmentsDetailComponent implements OnInit {
     this.establishmentForm.markAllAsTouched();
 
     if (this.establishmentForm.valid) {
-      
+
       const establishments = JSON.parse(localStorage.getItem('establishments'));
 
-      establishments.forEach(element => {
+      establishments.forEach((element: Establishments) => {
 
         if (element.id === this.establishmentForm.value.id) {
-          element.name = this.establishmentForm.value.name;
-          element.email = this.establishmentForm.value.email;
-          element.phone = this.establishmentForm.value.phone;
-          element.address = this.establishmentForm.value.address;
-          element.picture = this.establishmentForm.value.picture;
-          element.latitude = this.establishmentForm.value.latitude;
-          element.longitude = this.establishmentForm.value.longitude;
+          Object.assign(element, this.establishmentForm.value)          
         }
 
       });

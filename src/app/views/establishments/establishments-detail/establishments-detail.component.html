@@ -1,19 +1,154 @@
-<div class="container">
+<div class="container-establishment">
     <div class="establishment">
+
         <div class="establishment-header">
             <div class="establishment-header-img">
-                <img class="header-icon" src="../../../../assets/arrow-left.svg" width="20" alt="" (click)="goToEstablishments()">
-                <img src="{{ establishment.picture }}" width="76" alt="">
+                <img class="header-icon" src="../../../../assets/arrow-left.svg" width="20" alt=""
+                    (click)="goToEstablishments()">
+                <img src="{{ establishment?.picture }}" width="76" alt="">
             </div>
             <div class="establishment-header-title">
-                <span>{{ establishment.name}}</span>
-                <h5>id: {{ establishment.id}}</h5>
+                <span>{{ establishment?.name }}</span>
+                <h5>ID: {{ establishment?.id }}</h5>
             </div>
         </div>
+
         <div class="establishment-content">
-            <div class="label-info">
-                <span>Informações básicas</span>
-            </div>
+            <form [formGroup]="establishmentForm">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="label-info">
+                            <span>Informações básicas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-custom-1">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input id="name" class="form-control" type="text" formControlName="name"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('name').errors?.required}" required>
+                            <div *ngIf="establishmentForm.get('name').invalid && (establishmentForm.get('name').dirty || 
+                            establishmentForm.get('name').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('name').errors.required">
+                                    Nome é obrigatório.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input id="email" class="form-control" type="text" formControlName="email"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('email').errors?.required}" required>
+                            <div *ngIf="establishmentForm.get('email').invalid && (establishmentForm.get('email').dirty || 
+                                establishmentForm.get('email').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('email').errors.required">
+                                    Email é obrigatório.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input id="phone" class="form-control" type="text" formControlName="phone"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('phone').errors?.required}" required>
+                            <div *ngIf="establishmentForm.get('phone').invalid && (establishmentForm.get('phone').dirty || 
+                                establishmentForm.get('phone').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('phone').errors.required">
+                                    Telefone é obrigatório.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="label-info margin-custom-1">
+                            <span>Informações adicionais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-custom-1">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Endereço</label>
+                            <input id="address" class="form-control" type="text" formControlName="address"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('address').errors?.required}" required>
+                            <div *ngIf="establishmentForm.get('address').invalid && (establishmentForm.get('address').dirty || 
+                                establishmentForm.get('address').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('address').errors.required">
+                                    Endereço é obrigatório.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Foto</label>
+                            <input class="form-control" type="text" formControlName="picture" readonly>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Registrado</label>
+                            <input id="registered" class="form-control" type="text" formControlName="registered"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('registered').errors?.required}"
+                                required>
+                            <div *ngIf="establishmentForm.get('registered').invalid && (establishmentForm.get('registered').dirty || 
+                                establishmentForm.get('registered').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('registered').errors.required">
+                                    Registro é obrigatório.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-custom">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Latitude</label>
+                            <input id="latitude" class="form-control" type="text" formControlName="latitude"
+                                [ngClass]="{'is-invalid' : establishmentForm?.get('latitude').errors?.required}"
+                                required>
+                            <div *ngIf="establishmentForm.get('latitude').invalid && (establishmentForm.get('latitude').dirty || 
+                                establishmentForm.get('latitude').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('latitude').errors.required">
+                                    Latitude é obrigatória.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label>Longitude</label>
+                            <input id="longitude" class="form-control" type="text" formControlName="longitude"
+                                [ngClass]="{'is-invalid' : establishmentForm.get('longitude').errors?.required}"
+                                required>
+                            <div *ngIf="establishmentForm.get('longitude').invalid && (establishmentForm.get('longitude').dirty || 
+                                establishmentForm.get('longitude').touched)" class="">
+                                <small class="text-error" *ngIf="establishmentForm.get('longitude').errors.required">
+                                    Longitude é obrigatória.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
+
+        <div class="d-flex flex-row-reverse align-items-end">
+            <button type="button" (click)="saveEstablishment()" class="btn btn-save text-white mb-2">SALVAR</button>
+        </div>
+
     </div>
 </div>

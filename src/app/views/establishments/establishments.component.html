@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container-establishment">
 
     <div class="area-card" *ngFor="let establishments of listEstablishments">
 
-        <div class="card" (click)="goToDetails(establishments)">
+        <div class="card-establishment" (click)="goToDetails(establishments)">
             <img src="{{ establishments.picture }}" alt="">
-            <div class="card-content">
+            <div class="card-content-establishment">
                 <div class="card-content-title">
                     <span> {{ establishments.name }} </span>
+                    <h5> {{ establishments.id }} </h5>
                 </div>
                 <div class="card-content-subtitle">
                     <h5> {{ establishments.address }} </h5>

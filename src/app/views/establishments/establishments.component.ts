@@ -22,14 +22,30 @@ export class EstablishmentsComponent implements OnInit {
 
   getEstablishments(): void {
     this.apiService.get().subscribe((data) => {
-      this.listEstablishments = data.body;
+
+      if (data.body != undefined) {
+        this.setListEstablishments(data?.body);
+      }
+
     });
   }
 
-  goToDetails(establishment: Establishments): void {
+  setListEstablishments(establishments: Establishments[]): void {
+    if (localStorage.getItem('establishments') == undefined) {
+
+      localStorage.setItem('establishments', JSON.stringify(establishments));
+      this.listEstablishments = establishments;
+
+    } else {
+
+      this.listEstablishments = JSON.parse(localStorage.getItem('establishments'));
+
+    }
+  }
+
+  goToDetails(establishment: Establishments) {
     const id = establishment.id;
 
-    this.router.navigate(['establishments/establishment-detail', id], { state: { data: { establishment } } });
-
+    return this.router.navigate(['establishments/establishment-detail', id], { state: { data: { establishment } } });
   }
 }

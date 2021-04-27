@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Establishments } from 'src/app/core/model/establishments.model';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -14,7 +14,8 @@ export class EstablishmentsDetailComponent implements OnInit {
   establishment: Establishments;
 
   constructor(
-    private router: Router, private fb: FormBuilder, private toastr: ToastrService
+    private router: Router, private fb: FormBuilder, private toastr: ToastrService,
+    private cdref: ChangeDetectorRef
   ) { }
 
   establishmentForm = this.fb.group({
@@ -33,6 +34,8 @@ export class EstablishmentsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEstablishmentDetail();
+    this.cdref.detectChanges();
+
   }
 
   getEstablishmentDetail(): void {

@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Install all dependency
 
-Please, make sure you will install all dependency of project. To do this, let do `npm install`.
+Please, make sure you install the dependecies of the project. For install dependencies, use `npm install` on the console.
 
 ## Development server
 

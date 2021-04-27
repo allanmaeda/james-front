@@ -52,7 +52,7 @@
 
     .text-error {
         font-weight: bold;
-        font-size: 0.7em;
+        font-size: 9pt;
         color: red;
     }
 
@@ -172,8 +172,8 @@
                 margin-top: 1.5em;
             }
 
-            input {
-                margin-bottom: 1.2em;
+            .form-group {
+                margin-bottom: 1em;
             }
         }
     }
